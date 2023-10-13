@@ -5,7 +5,7 @@ app = FastAPI(title='Api Ejemplo con Python',version='0.01',description='Elabora
 
 app.include_router(router, prefix="/caja", tags=["Caja"])
 
-  
+
 # LEVANTAR EL SERVIDOR CON:
 # env\Scripts\activate  // activar entorno virtual
 # uvicorn main:app --reload //  py -m uvicorn main:app

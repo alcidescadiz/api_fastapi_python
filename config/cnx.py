@@ -6,7 +6,7 @@ def SqlSentence(sqlSentence=''):
     sql =sqlSentence
     cursor.execute(sql)
     conn.commit()
-    conn.close()
+    return conn.total_changes
     
 
 def SqlSentenceSelect(sqlSentence=''):
@@ -17,17 +17,9 @@ def SqlSentenceSelect(sqlSentence=''):
     return cursor.fetchall()
     
 class SqlQuerys:
-    SqlQueryCreateTable= f'''CREATE TABLE IF NOT EXISTS nombre_tabla(
-        id INTEGER PRIMARY KEY AUTOINCREMENT , 
-        fecha VARCHAR(100) NOT NULL,
-        tipo CHAR(20),
-        descripcion VARCHAR(255),
-        ingreso DECIMAL(10,2) DEFAULT 0,
-        egreso DECIMAL(10,2) DEFAULT 0
-    )'''
     SqlQueryGetAll= lambda nombreTabla :f'''select * from {nombreTabla} '''
     SqlQueryGetOne= lambda nombreTabla, id :f'''select * from {nombreTabla} where id={id}'''
-    SqlQueryAddRows = lambda caja : f'''INSERT INTO caja(tipo,ingreso,fecha,descripcion,egreso) VALUES('{caja.tipo}',{caja.ingreso},'{caja.fecha}','{caja.descripcion}',{caja.egreso});'''
-
+    SqlQueryDeleteOne= lambda nombreTabla, id :f'''DELETE from {nombreTabla} where id={id}'''
+    
 
 
