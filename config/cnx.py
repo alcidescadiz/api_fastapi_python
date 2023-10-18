@@ -17,9 +17,9 @@ def SqlSentenceSelect(sqlSentence=''):
     return cursor.fetchall()
     
 class SqlQuerys:
-    SqlQueryGetAll= lambda nombreTabla :f'''select * from {nombreTabla} '''
-    SqlQueryGetOne= lambda nombreTabla, id :f'''select * from {nombreTabla} where id={id}'''
-    SqlQueryDeleteOne= lambda nombreTabla, id :f'''DELETE from {nombreTabla} where id={id}'''
+    SqlQueryGetAll:str= lambda nombreTabla :f'''select * from {nombreTabla} '''
+    SqlQueryGetOne:str= lambda nombreTabla, id :f'''select * from {nombreTabla} where id={id}'''
+    SqlQueryDeleteOne:str= lambda nombreTabla, id :f'''DELETE from {nombreTabla} where id={id}'''
     
 
 
