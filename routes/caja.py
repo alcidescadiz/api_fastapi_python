@@ -1,10 +1,15 @@
-from fastapi import FastAPI, APIRouter,HTTPException
+from fastapi import FastAPI, APIRouter,HTTPException, Depends
 from controllers.caja_controllers import caja_controllers
 from schemas.caja_schema import Caja
+from middleware.auth import middle_prueba,verify_token
 
 app = FastAPI()
     
-router = APIRouter()
+router = APIRouter(
+    prefix="/v1/caja", 
+    tags=["Caja"],
+    dependencies=[Depends(verify_token)]
+)
 
 @router.get("/", description='Obtener todas las cajas')
 async def getAllCajas():

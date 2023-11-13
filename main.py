@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI(title='Api Ejemplo con Python',version='0.01',description='Elaborado por Ing. Alcides Cádiz')
 origins = [
     "http://127.0.0.1:5500",
+    "http://127.0.0.1:3000",
     "http://localhost"
 ]
 app.add_middleware(
@@ -15,10 +16,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(router)
 
-app.include_router(router, prefix="/caja", tags=["Caja"])
-
-@app.get("/", description='Obtener todas las cajas')
+@app.get("/", description='Ruta de inicio',tags=["Inicio"])
 async def hello():
     return {"inicio": "hola mundo"}
 
